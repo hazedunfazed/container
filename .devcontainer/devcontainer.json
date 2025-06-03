@@ -1,5 +1,5 @@
 {
-  "name": "Arch Linux GUI DevContainer",
+  "name": "Minimal Arch DevContainer",
   "image": "archlinux:latest",
   "features": {
     "ghcr.io/devcontainers/features/sshd:1": {
@@ -13,19 +13,6 @@
       ]
     }
   },
-  "postCreateCommand": "pacman -Syu --noconfirm && pacman -S --noconfirm base-devel xorg-server xorg-xinit xterm i3 dmenu tigervnc websockify feh rofi picom git nano && mkdir -p /home/vscode/.vnc && echo \"#!/bin/bash\\nxrdb $HOME/.Xresources\\ni3\" > /home/vscode/.vnc/xstartup && chmod +x /home/vscode/.vnc/xstartup && curl -L https://github.com/novnc/noVNC/archive/refs/tags/v1.3.0.tar.gz | tar xz --strip-components=1 -C /opt/novnc && ln -s /opt/novnc/utils/novnc_proxy /usr/local/bin/novnc_proxy",
-  "forwardPorts": [6080],
-  "portsAttributes": {
-    "6080": {
-      "label": "NoVNC GUI",
-      "onAutoForward": "openBrowser"
-    }
-  },
-  "runArgs": [
-    "--cap-add=SYS_PTRACE",
-    "--security-opt",
-    "seccomp=unconfined"
-  ],
-  "remoteUser": "vscode",
-  "entrypoint": "/bin/bash -c 'vncserver :1 && websockify --web=/opt/novnc --wrap-mode=ignore 6080 localhost:5901'"
+  "postCreateCommand": "pacman -Syu --noconfirm",
+  "remoteUser": "vscode"
 }
