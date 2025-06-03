@@ -1,18 +1,4 @@
 {
   "name": "Minimal Arch DevContainer",
-  "image": "archlinux:latest",
-  "features": {
-    "ghcr.io/devcontainers/features/sshd:1": {
-      "version": "latest"
-    }
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ms-vscode-remote.remote-containers"
-      ]
-    }
-  },
-  "postCreateCommand": "pacman -Syu --noconfirm",
-  "remoteUser": "vscode"
+  "image": "archlinux:latest"
 }
